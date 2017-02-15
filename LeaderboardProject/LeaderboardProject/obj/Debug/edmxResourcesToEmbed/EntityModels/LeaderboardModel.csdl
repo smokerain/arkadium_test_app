@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LeaderboardDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="scores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="GamerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Day" Type="DateTime" Precision="0" />
+    <Property Name="Score" Type="Single" />
+    <Property Name="game_id" Type="Int32" />
+    <NavigationProperty Name="games" Relationship="LeaderboardDatabaseModel.FK__scores__game_id__239E4DCF" FromRole="scores" ToRole="games" />
+  </EntityType>
+  <EntityContainer Name="LeaderboardDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="scores" EntityType="Self.scores" />
+    <EntitySet Name="games" EntityType="LeaderboardDatabaseModel.games" />
+    <AssociationSet Name="FK__scores__game_id__239E4DCF" Association="LeaderboardDatabaseModel.FK__scores__game_id__239E4DCF">
+      <End Role="games" EntitySet="games" />
+      <End Role="scores" EntitySet="scores" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="games">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__scores__game_id__239E4DCF">
+    <End Type="LeaderboardDatabaseModel.games" Role="games" Multiplicity="0..1" />
+    <End Type="LeaderboardDatabaseModel.scores" Role="scores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="games">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scores">
+        <PropertyRef Name="game_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище LeaderboardDatabaseModelContainer" CdmEntityContainer="LeaderboardDatabaseEntities">
+    <EntitySetMapping Name="scores">
+      <EntityTypeMapping TypeName="LeaderboardDatabaseModel.scores">
+        <MappingFragment StoreEntitySet="scores">
+          <ScalarProperty Name="game_id" ColumnName="game_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GamerName" ColumnName="GamerName" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="games">
+      <EntityTypeMapping TypeName="LeaderboardDatabaseModel.games">
+        <MappingFragment StoreEntitySet="games">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
